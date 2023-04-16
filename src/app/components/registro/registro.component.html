@@ -1,0 +1,34 @@
+<section class="loginForm mt-3 p-3 d-flex align-items-center flex-column">
+    <h3>Formulario registro</h3>
+    <form class="d-flex flex-column col-3" novalidate [formGroup]="formularioRegistro" (ngSubmit)="registrarse()">
+        <input placeholder="Usuario" type="text" formControlName="usuario">
+        <div
+            *ngIf="formularioRegistro.controls['usuario'].invalid && (formularioRegistro.controls['usuario'].dirty || formularioRegistro.controls['usuario'].touched)">
+            <p *ngIf="formularioRegistro.controls['usuario'].errors?.['required']">El campo Usuario es requerido.</p>
+        </div>
+
+        <input placeholder="Contraseña" type="password" formControlName="password">
+        <div
+            *ngIf="formularioRegistro.controls['password'].invalid && (formularioRegistro.controls['password'].dirty || formularioRegistro.controls['password'].touched)">
+            <p *ngIf="formularioRegistro.controls['password'].errors?.['required']">El campo Contraseña es requerido.
+            </p>
+            <p *ngIf="formularioRegistro.controls['password'].errors?.['minLength']">La contraseña debe ser de 6
+                caracteres
+                o más.</p>
+        </div>
+        <input placeholder="Repetir Contraseña" type="password" formControlName="repetirPassword">
+        <div
+            *ngIf="formularioRegistro.controls['repetirPassword'].invalid && (formularioRegistro.controls['repetirPassword'].dirty || formularioRegistro.controls['repetirPassword'].touched)">
+            <p *ngIf="formularioRegistro.controls['repetirPassword'].errors?.['required']">El campo Repetir contraseña
+                es requerido.</p>
+            <p *ngIf="formularioRegistro.controls['repetirPassword'].errors?.['minLength']">La contraseña debe ser de 6
+                caracteres
+                o más.</p>
+        </div>
+
+
+        <div class="d-flex justify-content-around">
+            <button [disabled]="formularioRegistro.invalid">Registrarse</button>
+        </div>
+    </form>
+</section>

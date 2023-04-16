@@ -1,0 +1,13 @@
+<section class="d-flex justify-content-center">
+    <form novalidate [formGroup]="formularioEdades">
+        <label>Edad 1</label>
+        <input type="number" formControlName="edad1">
+        <label>Edad 2</label>
+        <input type="number" formControlName="edad2">
+
+        <div class="d-flex justify-content-around">
+            <span>Suma de las edades: {{sumaEdades}}</span>
+            <span>Promedios de las edades: {{promedioEdades}}</span>
+        </div>
+    </form>
+</section>

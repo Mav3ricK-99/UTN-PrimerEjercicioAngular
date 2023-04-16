@@ -7,12 +7,20 @@ import { BienvenidoComponent } from './components/bienvenido/bienvenido.componen
 import { LoginComponent } from './components/login/login.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { ErrorComponent } from './components/error/error.component';
+import { RegistroComponent } from './components/registro/registro.component';
+import { CalculoEdadesComponent } from './components/calculo-edades/calculo-edades.component';
+import { RegresarDirective } from './directives/regresar.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     BienvenidoComponent,
-    LoginComponent
+    LoginComponent,
+    ErrorComponent,
+    RegistroComponent,
+    CalculoEdadesComponent,
+    RegresarDirective,
   ],
   imports: [
     BrowserModule,

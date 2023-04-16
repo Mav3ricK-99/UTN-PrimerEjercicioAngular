@@ -1,37 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{title}}</title>
-</head>
-
-<body>
-
-  <section class="d-flex justify-content-center">
-    <form novalidate [formGroup]="formularioEdades">
-      <label>Edad 1</label>
-      <input type="number" formControlName="edad1">
-      <label>Edad 2</label>
-      <input type="number" formControlName="edad2">
-
-      <div class="d-flex justify-content-around">
-        <span>Suma de las edades: {{sumaEdades}}</span>
-        <span>Promedios de las edades: {{promedioEdades}}</span>
-      </div>
-    </form>
-  </section>
-
-  <section *ngIf="formularioLoginOculto && !usuarioIngresado" class="d-flex justify-content-center">
-    <button (click)="cargarFormularioLogin();" class="mt-2 ms-2"> Login </button>
-  </section>
-
-  <app-login (ingresoUsuarioEvent)="mostrarBienvenida($event)" (cancelarEvent)="cerrarFormulario($event)"
-    *ngIf="!formularioLoginOculto"></app-login>
-
-  <app-bienvenido *ngIf="usuarioIngresado"></app-bienvenido>
-</body>
-
-</html>
+<nav class="d-flex justify-content-around">
+    <a routerLink="/edades">Calculo edades </a>
+    <a routerLink="/registro">Registrarse </a>
+    <a routerLink="/ingresar">Ingresar</a>
+</nav>
+<router-outlet></router-outlet>

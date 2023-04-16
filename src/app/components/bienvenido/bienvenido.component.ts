@@ -6,7 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./bienvenido.component.sass']
 })
 export class BienvenidoComponent {
-
-  user: any;
-
 }

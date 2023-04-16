@@ -1,5 +1,7 @@
-import { Component, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -9,11 +11,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 export class LoginComponent implements OnInit {
 
-  @Output()
-  cancelarEvent = new EventEmitter<boolean>();
-
-  @Output()
-  ingresoUsuarioEvent = new EventEmitter<Object>();
+  constructor(private router: Router){}
 
   formularioIngreso: any;
 
@@ -24,21 +22,27 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  cancelarFormularioLogin() {
-    this.cancelarEvent.emit(true);
-  }
-
   //https://codingpotions.com/angular-formularios
   ingresar() {
     let usuario = this.formularioIngreso.get('usuario').value;
     let password = this.formularioIngreso.get('password').value;
 
-    if (usuario === 'utn' && password === 'angular') {
-      let user = {
-        usuario: 'utn',
-      };
+    let usuarios;
+    let usuariosString = localStorage.getItem('users');
+    if (usuariosString != null) {
+      usuarios = JSON.parse(usuariosString);
+    }
 
-      this.ingresoUsuarioEvent.emit(user);
+    let resultado = usuarios.find(user => {
+      if(usuario == user.usuario && password == user.password) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+    
+    if (resultado) {
+      this.router.navigate(['/bienvenida'])
     }
   }
 }
